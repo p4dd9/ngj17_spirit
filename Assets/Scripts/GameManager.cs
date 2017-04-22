@@ -5,46 +5,67 @@ using UnityEngine.SceneManagement;
 
 public enum EGameState
 {
-    Menu,
-    InGame,
-    GameOver
+	Menu,
+	InGame,
+	GameOver
 }
 
 public class GameManager : Singleton<GameManager>
 {
-    public EGameState currentGameState = EGameState.Menu;
-	// Use this for initialization
+	public EGameState currentGameState = EGameState.Menu;
 	
 	// Update is called once per frame
 	private void Update ()
-    {
-		
+	{
+		switch (this.currentGameState) {
+		case EGameState.Menu:
+			{
+				HandleMenuState ();
+				break;
+			}
+			
+		case EGameState.InGame:
+			{
+				HandleInGameState ();
+				break;
+			}
 
-        if(this.currentGameState == EGameState.Menu)
-        {
-            if (Input.anyKey)
-            {
-                this.currentGameState = EGameState.InGame;
-                SceneManager.LoadScene("Level1");
-            }
-        }
-        else if (this.currentGameState == EGameState.InGame)
-        {
-            if (Input.GetKeyUp(KeyCode.G))
-            {
-                Debug.Log("Pressed G");
-                GameObject gameOverGO = Resources.Load<GameObject>("GameOver");
-                Instantiate(gameOverGO);
-                this.currentGameState = EGameState.GameOver;
-            }
-        }
-        else if(this.currentGameState == EGameState.GameOver)
-        {
-            if(Input.anyKey)
-            {
-                this.currentGameState = EGameState.Menu;
-                SceneManager.LoadScene("Menu");
-            }
-        }
+		case EGameState.GameOver:
+			{
+				HandleGameOverState ();
+				break;
+			}
+		}
+	}
+
+	private void HandleMenuState() {
+		if (Input.anyKey) {
+			SetCurrenGameState (EGameState.InGame);
+			LoadScene ("Level1");
+		}
+	}
+
+	private void HandleInGameState() {
+		if (Input.GetKeyUp (KeyCode.G)) {
+			GameObject gameOverGO = Resources.Load<GameObject> ("GameOver");
+			Instantiate (gameOverGO);
+			SetCurrenGameState(EGameState.GameOver);
+		}
+	}
+	private void HandleGameOverState() {
+		if (Input.anyKey) {
+			SetCurrenGameState (EGameState.Menu);
+			LoadScene ("Menu");
+		}
+	}
+
+	private void SetCurrenGameState (EGameState state)
+	{
+		this.currentGameState = state;
+	}
+
+	private void LoadScene (string sceneName)
+	{
+		SceneManager.LoadScene (sceneName);
 	}
 }
