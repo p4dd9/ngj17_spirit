@@ -157,7 +157,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.66608995, g: 0.8235294, b: 0.6932347, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -235,36 +235,6 @@ Prefab:
     - target: {fileID: 4609702856231954, guid: fadb9eb522dd9c445883b70f7c2cfd65, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198436328038686622, guid: fadb9eb522dd9c445883b70f7c2cfd65,
-        type: 2}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 198436328038686622, guid: fadb9eb522dd9c445883b70f7c2cfd65,
-        type: 2}
-      propertyPath: randomSeed
-      value: -1688877646
-      objectReference: {fileID: 0}
-    - target: {fileID: 198436328038686622, guid: fadb9eb522dd9c445883b70f7c2cfd65,
-        type: 2}
-      propertyPath: TrailModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 199393392746190318, guid: fadb9eb522dd9c445883b70f7c2cfd65,
-        type: 2}
-      propertyPath: m_MaxParticleSize
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 198436328038686622, guid: fadb9eb522dd9c445883b70f7c2cfd65,
-        type: 2}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198436328038686622, guid: fadb9eb522dd9c445883b70f7c2cfd65,
-        type: 2}
-      propertyPath: InitialModule.startSize.scalar
-      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fadb9eb522dd9c445883b70f7c2cfd65, type: 2}
