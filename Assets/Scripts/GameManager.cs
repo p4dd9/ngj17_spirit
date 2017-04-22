@@ -45,11 +45,49 @@ public class GameManager : Singleton<GameManager>
 		}
 	}
 
-	private void HandleInGameState() {
-		if (Input.GetKeyUp (KeyCode.G)) {
-			GameObject gameOverGO = Resources.Load<GameObject> ("GameOver");
-			Instantiate (gameOverGO);
+    public IEnumerator CheckIfGameOver()
+    {
+        yield return new WaitForEndOfFrame();
+        GameObject[] goodStuffs = GameObject.FindGameObjectsWithTag("GoodStuff");
+
+        float goodStuffSize = 0;
+
+        for(int i = 0; i < goodStuffs.Length; ++i)
+        {
+            goodStuffSize += goodStuffs[i].transform.localScale.x;
+        }
+
+        EnemyAction[] badStuffs = FindObjectsOfType<EnemyAction>();
+
+        float badStuffSize = 0;
+
+        for (int i = 0; i < badStuffs.Length; ++i)
+        {
+            badStuffSize += badStuffs[i].transform.localScale.x;
+        }
+
+        if (goodStuffSize < badStuffSize)
+        {
+            GameObject gameOverGO = Resources.Load<GameObject>("GameOver");
+            Instantiate(gameOverGO);
             SetCurrenGameState(EGameState.GameOver);
+        }
+    }
+
+    private void HandleInGameState() {
+
+		if (Input.GetKeyUp(KeyCode.P)) // break
+		{
+			if (Time.timeScale == 1) // audio on
+			{
+				Time.timeScale = 0;
+				AudioListener.pause = true;
+			}
+			else // audio off
+			{
+				Time.timeScale = 1;
+				AudioListener.pause = false;
+			}
 		}
 	}
 	private void HandleGameOverState() {

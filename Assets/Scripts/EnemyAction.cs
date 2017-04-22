@@ -37,6 +37,7 @@ public class EnemyAction : MonoBehaviour
                     if (other.gameObject.transform.localScale.x < transform.localScale.x)
                     {
                         Destroy(other.gameObject);
+                        StartCoroutine(GameManager.Instance.CheckIfGameOver());
                     }
                     else
                     {
