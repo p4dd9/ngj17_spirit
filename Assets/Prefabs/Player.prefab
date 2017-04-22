@@ -302,8 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4cef65384223a4d81151a4afff7f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 5
-  directionLagCoefficient: 2
+  thrust: 7
+  directionLagCoefficient: 5
 --- !u!114 &114865207258944918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,7 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c568610ba9232b4e8ed38d3b7596e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPushForce: 5
 --- !u!198 &198209133487374910
 ParticleSystem:
   m_ObjectHideFlags: 1
