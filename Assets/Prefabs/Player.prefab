@@ -3362,7 +3362,7 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       minMaxState: 0
-      scalar: 1.75
+      scalar: 1.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3788,7 +3788,7 @@ ParticleSystem:
     boxY: 1
     boxZ: 1
     radius:
-      value: 0.5
+      value: 0.7
       mode: 0
       spread: 0
       speed:
@@ -3929,7 +3929,7 @@ ParticleSystem:
         m_RotationOrder: 4
     rateOverDistance:
       minMaxState: 0
-      scalar: 500
+      scalar: 250
       maxCurve:
         serializedVersion: 2
         m_Curve:
