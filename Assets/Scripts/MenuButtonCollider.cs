@@ -15,7 +15,7 @@ public enum EButtonAction
 
 public class MenuButtonCollider : MonoBehaviour
 {
-    public Text text;
+    public Transform text;
     public float triggerWaitTime = 1.75f;
     public float triggerExitWaitTime = 0.5f;
     public float targetScale = 1.5f;
@@ -32,13 +32,13 @@ public class MenuButtonCollider : MonoBehaviour
     {
         if(!this.isInsideTrigger)
         {
-            if (!Mathf.Approximately(this.text.rectTransform.localScale.x, 1))
+            if (!Mathf.Approximately(this.text.localScale.x, 1))
             {
-                this.text.rectTransform.localScale = Vector3.Lerp(Vector3.one * this.exitScale, Vector3.one, Mathf.InverseLerp(this.exitTriggerTime, this.exitTriggerTime + this.triggerExitWaitTime, Time.time));
+                this.text.localScale = Vector3.Lerp(Vector3.one * this.exitScale, Vector3.one, Mathf.InverseLerp(this.exitTriggerTime, this.exitTriggerTime + this.triggerExitWaitTime, Time.time));
             }
             else
             {
-                this.text.rectTransform.localScale = Vector3.one;
+                this.text.localScale = Vector3.one;
             }
         }
     }
@@ -47,14 +47,14 @@ public class MenuButtonCollider : MonoBehaviour
     {
         this.startTriggerTime = Time.time;
         this.isInsideTrigger = true;
-        this.enterScale = this.text.rectTransform.localScale.x;
+        this.enterScale = this.text.localScale.x;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        this.text.rectTransform.localScale = Vector3.Lerp(Vector3.one * this.enterScale, Vector3.one * this.targetScale, Mathf.InverseLerp(this.startTriggerTime, this.startTriggerTime + this.triggerWaitTime, Time.time));
+        this.text.localScale = Vector3.Lerp(Vector3.one * this.enterScale, Vector3.one * this.targetScale, Mathf.InverseLerp(this.startTriggerTime, this.startTriggerTime + this.triggerWaitTime, Time.time));
 
-        if(Mathf.Approximately(this.text.rectTransform.localScale.x, this.targetScale))
+        if(Mathf.Approximately(this.text.localScale.x, this.targetScale))
         {
             switch(this.action)
             {
@@ -123,6 +123,6 @@ public class MenuButtonCollider : MonoBehaviour
     {
         this.isInsideTrigger = false;
         this.exitTriggerTime = Time.time;
-        this.exitScale = this.text.rectTransform.localScale.x;
+        this.exitScale = this.text.localScale.x;
     }
 }
