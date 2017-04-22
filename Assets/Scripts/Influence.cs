@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Influence : MonoBehaviour
 {
-    public float maxPushForce = 5f;
-
     private Rigidbody2D playerRB;
 
     // Use this for initialization
