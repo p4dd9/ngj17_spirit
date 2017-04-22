@@ -216,6 +216,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50131227478205174, guid: fadb9eb522dd9c445883b70f7c2cfd65,
+        type: 2}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50131227478205174, guid: fadb9eb522dd9c445883b70f7c2cfd65,
+        type: 2}
+      propertyPath: m_Mass
+      value: 3.1415927
+      objectReference: {fileID: 0}
+    - target: {fileID: 50131227478205174, guid: fadb9eb522dd9c445883b70f7c2cfd65,
+        type: 2}
+      propertyPath: m_Simulated
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fadb9eb522dd9c445883b70f7c2cfd65, type: 2}
   m_IsPrefabParent: 0
