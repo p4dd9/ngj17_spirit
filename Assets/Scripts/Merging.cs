@@ -26,7 +26,8 @@ public class Merging : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "GoodStuff")
+        if(other.gameObject.tag == "GoodStuff" && 
+          (transform.localScale.x < maxSize && other.gameObject.transform.localScale.x < maxSize))
         {
             if (gameObject.activeSelf)
             {
