@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    public Vector2 speed = new Vector2(50, 50);
     public float thrust = 2;
     public float directionLagCoefficient = 2;
 
@@ -19,17 +18,23 @@ public class PlayerMovement : MonoBehaviour
         this.rigidbody2D = this.GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
 
-        this.desiredDirection = new Vector2(speed.x * inputX,speed.y * inputY);
+        this.desiredDirection = new Vector2(inputX, inputY);
         this.currentDirection = Vector2.Lerp(this.currentDirection, this.desiredDirection.normalized, Time.deltaTime * directionLagCoefficient);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         this.rigidbody2D.AddForce(this.currentDirection.normalized * this.currentDirection.magnitude * this.thrust);
+    }
+
+    private void LateUpdate()
+    {
+        //Vector3 worldPoint = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 5));
+        //this.transform.position = worldPoint;
     }
 }
