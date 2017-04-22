@@ -39,10 +39,7 @@ public class GameManager : Singleton<GameManager>
 	}
 
 	private void HandleMenuState() {
-		if (Input.anyKey) {
-			SetCurrenGameState (EGameState.InGame);
-			LoadScene ("Level1");
-		}
+		// empty
 	}
 
     public IEnumerator CheckIfGameOver()
