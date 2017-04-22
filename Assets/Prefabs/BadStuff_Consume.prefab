@@ -25,9 +25,10 @@ GameObject:
   - component: {fileID: 114770438556520468}
   - component: {fileID: 114960780766688994}
   - component: {fileID: 114208877434151646}
+  - component: {fileID: 114447034661500526}
   m_Layer: 8
   m_Name: BadStuff_Consume
-  m_TagString: Untagged
+  m_TagString: BadStuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +96,21 @@ MonoBehaviour:
   PushForce: 2
   GoodStuffPrefab: {fileID: 1111930257568990, guid: 8bb21f645108c5542861f755b836781b,
     type: 2}
+--- !u!114 &114447034661500526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403070748833396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a1d237a72dc024dbfddcadec60c46d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MergeEffect: {fileID: 1591740973836028, guid: 50b32eae2775122459b0e44073f47d53,
+    type: 2}
+  minSize: 1
+  maxSize: 4
 --- !u!114 &114770438556520468
 MonoBehaviour:
   m_ObjectHideFlags: 1
