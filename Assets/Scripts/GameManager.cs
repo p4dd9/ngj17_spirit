@@ -47,15 +47,15 @@ public class GameManager : Singleton<GameManager>
 
     public void CheckIfGameOver()
     {
-
+        if (GameObject.FindGameObjectsWithTag("GoodStuff").Length - 1 == 0)
+        {
+            GameObject gameOverGO = Resources.Load<GameObject>("GameOver");
+            Instantiate(gameOverGO);
+            SetCurrenGameState(EGameState.GameOver);
+        }
     }
 
     private void HandleInGameState() {
-		/*if (Input.GetKeyUp (KeyCode.G)) {
-			GameObject gameOverGO = Resources.Load<GameObject> ("GameOver");
-			Instantiate (gameOverGO);
-            SetCurrenGameState(EGameState.GameOver);
-		}*/
 
 		if (Input.GetKeyUp(KeyCode.P)) // break
 		{
