@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        shapeRB.AddForce(movement * Speed);
+        shapeRB.AddForce(movement * Speed * transform.localScale.x);
     }
 
     Vector2 wander()
