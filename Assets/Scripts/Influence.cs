@@ -28,7 +28,20 @@ public class Influence : MonoBehaviour
 
             otherRB.AddForce(dir.normalized * playerRB.velocity.magnitude, ForceMode2D.Impulse);
 
-            if(this.onCollided != null)
+            if(other.gameObject.transform.localScale.x == 4)
+            {
+                Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Hittingbiggest"));
+            }
+            else if (other.gameObject.transform.localScale.x == 1)
+            {
+                Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Hitting"));
+            }
+            else
+            {
+                Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Hittingbigger"));
+            }
+
+            if (this.onCollided != null)
             {
                 this.onCollided();
             }

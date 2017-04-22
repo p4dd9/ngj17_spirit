@@ -47,6 +47,8 @@ public class Merging : MonoBehaviour
                 shapeRB.mass += otherRB.mass;
                 //shapeRB.drag += otherRB.drag;
 
+                Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Hit Green" + UnityEngine.Random.Range(0, 3)));
+
                 currentSize += other.gameObject.transform.localScale.x;
                 if (currentSize > maxSize)
                     currentSize = maxSize;

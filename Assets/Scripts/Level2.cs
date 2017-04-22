@@ -7,6 +7,7 @@ public class Level2 : Level
 {
     public float completeLevelWaitTimeInSecs = 2;
     private bool completeLevelTriggered;
+	private string levelName = "Level3";
 
     private void Start()
     {
@@ -27,6 +28,6 @@ public class Level2 : Level
     private IEnumerator CompleteLevel()
     {
         yield return new WaitForSeconds(this.completeLevelWaitTimeInSecs);
-        SceneManager.LoadScene("Level3");
+		SceneManager.LoadScene(levelName);
     }
 }
