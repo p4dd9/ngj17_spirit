@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class Influence : MonoBehaviour
 {
-    public float PushForce = 5f;
+    public float maxPushForce = 5f;
 
-	//// Use this for initialization
-	//void Start ()
- //   {
-		
-	//}
-	
-	//// Update is called once per frame
-	//void Update ()
- //   {
-		
-	//}
+    private Rigidbody2D playerRB;
+
+    // Use this for initialization
+    void Start()
+    {
+        playerRB = GetComponentInParent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -24,7 +26,8 @@ public class Influence : MonoBehaviour
         {
             Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
             Vector2 dir = other.gameObject.transform.position - gameObject.transform.position;
-            otherRB.AddForce(dir.normalized * PushForce, ForceMode2D.Impulse);
+
+            otherRB.AddForce(dir.normalized * playerRB.velocity.magnitude, ForceMode2D.Impulse);
         }
     }
 }

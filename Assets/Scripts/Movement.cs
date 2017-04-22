@@ -26,5 +26,6 @@ public class Movement : MonoBehaviour
 
         Vector2 movement = new Vector2(horizontal, vertical) * Speed;
         circleRB.AddForce(movement);
+      
     }
 }

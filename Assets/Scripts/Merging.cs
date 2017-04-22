@@ -9,10 +9,12 @@ public class Merging : MonoBehaviour
     public float maxSize = 4f;
 
     private float currentSize;
+    private Rigidbody2D shapeRB;
 
 	// Use this for initialization
 	void Start ()
     {
+        shapeRB = GetComponent<Rigidbody2D>();
         currentSize = transform.localScale.x;
     }
 	
@@ -28,6 +30,7 @@ public class Merging : MonoBehaviour
         {
             if (gameObject.activeSelf)
             {
+                Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
                 // disable the other gameObject we've collided with, then flag to destroy it
                 other.gameObject.SetActive(false);
                 Destroy(other.gameObject);
@@ -37,6 +40,9 @@ public class Merging : MonoBehaviour
                     GameObject ps = Instantiate(MergeEffect, transform.position , transform.rotation);
                     Destroy(ps, ps.GetComponent<ParticleSystem>().main.duration);
                 }
+
+                shapeRB.mass += otherRB.mass;
+                shapeRB.drag += otherRB.drag;
 
                 currentSize += other.gameObject.transform.localScale.x;
                 if (currentSize > maxSize)
