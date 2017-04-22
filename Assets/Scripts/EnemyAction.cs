@@ -45,12 +45,15 @@ public class EnemyAction : MonoBehaviour
                     {
                         Destroy(other.gameObject);
                         StartCoroutine(GameManager.Instance.CheckIfGameOver());
+                        Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Red eats green"));
                     }
                     else
                     {
                         Destroy(gameObject);
 
-                        if(this.onCollided != null)
+                        Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Hit Green" + UnityEngine.Random.Range(0, 3)));
+
+                        if (this.onCollided != null)
                         {
                             this.onCollided();
                         }
