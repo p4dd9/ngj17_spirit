@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a1d237a72dc024dbfddcadec60c46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MergeEffect: {fileID: 1591740973836028, guid: 50b32eae2775122459b0e44073f47d53,
+  MergeEffect: {fileID: 1494926570651002, guid: 7f11c2688b026c24c9b9167dc1db5022,
     type: 2}
   minSize: 0.5
   maxSize: 4

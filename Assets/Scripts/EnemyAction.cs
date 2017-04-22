@@ -10,6 +10,7 @@ public class EnemyAction : MonoBehaviour
         Split
     }
 
+    public GameObject SplitEffect;
     public Attack AttackBehavior = Attack.Consume;
     public float PushForce = 2f;
     public GameObject GoodStuffPrefab;
@@ -52,18 +53,27 @@ public class EnemyAction : MonoBehaviour
 
                         if(GoodStuffPrefab != null)
                         {
-                            float newScal = oldTransform.localScale.x / 2f;
-                            Vector3 dir = new Vector3(newScal, newScal, 0);
+                            float newScale = oldTransform.localScale.x / 2f;
+                            if (newScale < other.gameObject.GetComponent<Merging>().minSize)
+                                newScale = other.gameObject.GetComponent<Merging>().minSize;
+
+                            Vector3 dir = new Vector3(newScale, newScale, 0);
                             GameObject split1 = Instantiate(GoodStuffPrefab, oldTransform.position - dir, Quaternion.identity);
                             GameObject split2 = Instantiate(GoodStuffPrefab, oldTransform.position + dir, Quaternion.identity);
 
+                            if (SplitEffect != null)
+                            {
+                                GameObject ps = Instantiate(SplitEffect, transform.position, transform.rotation);
+                                Destroy(ps, ps.GetComponent<ParticleSystem>().main.duration);
+                            }
+
                             // update scale, mass and drag
-                            split1.transform.localScale = Vector3.one * newScal;
+                            split1.transform.localScale = Vector3.one * newScale;
                             Rigidbody2D split1RB = split1.GetComponent<Rigidbody2D>();
                             split1RB.mass = otherRB.mass / 2f;
                             split1RB.drag = otherRB.drag / 2f;
 
-                            split2.transform.localScale = Vector3.one * newScal;
+                            split2.transform.localScale = Vector3.one * newScale;
                             Rigidbody2D split2RB = split2.GetComponent<Rigidbody2D>();
                             split2RB.mass = otherRB.mass / 2f;
                             split2RB.drag = otherRB.drag / 2f;
