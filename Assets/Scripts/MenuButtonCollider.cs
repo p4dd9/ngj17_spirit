@@ -70,7 +70,15 @@ public class MenuButtonCollider : MonoBehaviour
 
                 case EButtonAction.Continue:
                     {
-
+                        if (!this.loadLevelTriggered)
+                        {
+                            this.loadLevelTriggered = true;
+                            string continueScene = PlayerPrefs.GetString("ContinueScene", "");
+                            if(continueScene.Length > 0)
+                            {
+                                StartCoroutine(LoadLevel(continueScene));
+                            }
+                        }
                     }
                     break;
 
