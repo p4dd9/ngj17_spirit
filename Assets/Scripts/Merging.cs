@@ -45,7 +45,7 @@ public class Merging : MonoBehaviour
                 }
 
                 shapeRB.mass += otherRB.mass;
-                shapeRB.drag += otherRB.drag;
+                //shapeRB.drag += otherRB.drag;
 
                 currentSize += other.gameObject.transform.localScale.x;
                 if (currentSize > maxSize)

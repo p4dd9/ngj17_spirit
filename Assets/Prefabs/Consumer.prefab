@@ -186,6 +186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf0aa4f1e619264fa35c23159f915c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SplitEffect: {fileID: 0}
+  ConsumeEffectGoodStuff: {fileID: 1778030180722434, guid: 90a9a72b36408ac4680181e69be27137,
+    type: 2}
+  ConsumeEffectConsumer: {fileID: 1914482702374246, guid: de2c37dab2529504783f45eb208e2fc5,
+    type: 2}
   AttackBehavior: 0
   PushForce: 2
   GoodStuffPrefab: {fileID: 0}
