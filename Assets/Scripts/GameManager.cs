@@ -45,12 +45,17 @@ public class GameManager : Singleton<GameManager>
 		}
 	}
 
-	private void HandleInGameState() {
-		if (Input.GetKeyUp (KeyCode.G)) {
+    public void CheckIfGameOver()
+    {
+
+    }
+
+    private void HandleInGameState() {
+		/*if (Input.GetKeyUp (KeyCode.G)) {
 			GameObject gameOverGO = Resources.Load<GameObject> ("GameOver");
 			Instantiate (gameOverGO);
             SetCurrenGameState(EGameState.GameOver);
-		}
+		}*/
 
 		if (Input.GetKeyUp(KeyCode.P)) // break
 		{
