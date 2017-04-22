@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a1d237a72dc024dbfddcadec60c46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MergeEffect: {fileID: 1591740973836028, guid: 50b32eae2775122459b0e44073f47d53,
+  MergeEffect: {fileID: 1611587492351182, guid: 557b731ebf2ff454fa3f3fc915210799,
     type: 2}
   minSize: 1
   maxSize: 4
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1983131707450308}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f9d7a0323fc16c428416f88c8123c17, type: 3}
   m_Name: 
