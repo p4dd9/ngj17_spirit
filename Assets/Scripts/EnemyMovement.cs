@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Rigidbody2D shapeRB;
     private Vector2 movement = Vector2.zero;
-    private float timer = 0;
+    private float timer = 0f;
 
 	// Use this for initialization
 	void Start ()
