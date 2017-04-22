@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - GoodStuff
+  - BadStuff
   layers:
   - Default
   - TransparentFX

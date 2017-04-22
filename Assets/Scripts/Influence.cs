@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Influence : MonoBehaviour
 {
     public float maxPushForce = 5f;
 
     private Rigidbody2D playerRB;
+    public Action onCollided;
 
     // Use this for initialization
     void Start()
@@ -17,7 +19,6 @@ public class Influence : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -28,6 +29,11 @@ public class Influence : MonoBehaviour
             Vector2 dir = other.gameObject.transform.position - gameObject.transform.position;
 
             otherRB.AddForce(dir.normalized * playerRB.velocity.magnitude, ForceMode2D.Impulse);
+
+            if(this.onCollided != null)
+            {
+                this.onCollided();
+            }
         }
     }
 }
