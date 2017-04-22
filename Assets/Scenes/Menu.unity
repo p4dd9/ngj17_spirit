@@ -896,7 +896,7 @@ MonoBehaviour:
   text: {fileID: 1878571263}
   triggerWaitTime: 1.75
   triggerExitWaitTime: 0.5
-  targetScale: 2
+  targetScale: 1.5
   action: 0
 --- !u!1 &2026224905
 GameObject:

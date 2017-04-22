@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114923596554804496}
   - component: {fileID: 114027636993692996}
   m_Layer: 8
-  m_Name: BadStuff_Split
+  m_Name: Splitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
