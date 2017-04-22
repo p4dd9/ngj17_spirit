@@ -9,15 +9,16 @@ public enum EButtonAction
     NewGame,
     Continue,
     Credits,
-    Exit
+    Exit,
+    Menu
 }
 
 public class MenuButtonCollider : MonoBehaviour
 {
     public Text text;
-    public float triggerWaitTime = 5;
+    public float triggerWaitTime = 1.75f;
     public float triggerExitWaitTime = 0.5f;
-    public float targetScale = 2;
+    public float targetScale = 1.5f;
     public EButtonAction action;
 
     private float startTriggerTime;
@@ -75,13 +76,27 @@ public class MenuButtonCollider : MonoBehaviour
 
                 case EButtonAction.Credits:
                     {
+                        if (!this.loadLevelTriggered)
+                        {
+                            this.loadLevelTriggered = true;
+                            StartCoroutine(LoadLevel("Credits"));
+                        }
+                    }
+                    break;
 
+                case EButtonAction.Menu:
+                    {
+                        if (!this.loadLevelTriggered)
+                        {
+                            this.loadLevelTriggered = true;
+                            StartCoroutine(LoadLevel("Menu"));
+                        }
                     }
                     break;
 
                 case EButtonAction.Exit:
                     {
-
+                        Application.Quit();
                     }
                     break;
             }
@@ -92,7 +107,7 @@ public class MenuButtonCollider : MonoBehaviour
     {
         GameObject go = Instantiate<GameObject>(Resources.Load<GameObject>("FadeOut"));
         go.GetComponentInChildren<UIFade>().fadeTime = 0.5f;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(levelName);
     }
 
