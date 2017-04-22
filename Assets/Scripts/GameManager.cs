@@ -45,6 +45,38 @@ public class GameManager : Singleton<GameManager>
 		}
 	}
 
+    public IEnumerator CheckIfWon()
+    {
+        yield return new WaitForEndOfFrame();
+        GameObject[] goodStuffs = GameObject.FindGameObjectsWithTag("GoodStuff");
+
+        float goodStuffSize = 0;
+
+        for (int i = 0; i < goodStuffs.Length; ++i)
+        {
+            goodStuffSize += goodStuffs[i].transform.localScale.x;
+        }
+
+        EnemyAction[] badStuffs = FindObjectsOfType<EnemyAction>();
+
+        float badStuffSize = 0;
+
+        for (int i = 0; i < badStuffs.Length; ++i)
+        {
+            badStuffSize += badStuffs[i].transform.localScale.x;
+        }
+
+        if (goodStuffSize > badStuffSize)
+        {
+            GeneralLevel generalLevel = FindObjectOfType<GeneralLevel>();
+
+            if (generalLevel != null)
+            {
+                generalLevel.TriggerCompleteLevel();
+            }
+        }
+    }
+
     public IEnumerator CheckIfGameOver()
     {
         yield return new WaitForEndOfFrame();

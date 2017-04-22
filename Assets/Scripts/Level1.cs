@@ -14,7 +14,7 @@ public class Level1 : Level
         influence.onCollided += this.TriggerCompleteLevel;
     }
 
-    protected override void TriggerCompleteLevel()
+    public override void TriggerCompleteLevel()
     {
         if(!this.completeLevelTriggered)
         {

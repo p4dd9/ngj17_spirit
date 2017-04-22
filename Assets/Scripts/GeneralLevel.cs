@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Level2 : Level
+public class GeneralLevel : Level
 {
     public float completeLevelWaitTimeInSecs = 2;
     private bool completeLevelTriggered;
 
-    private void Start()
+    private IEnumerator CompleteLevel()
     {
-        Merging merging = FindObjectOfType<Merging>();
-        merging.onCollided += this.TriggerCompleteLevel;
+        yield return new WaitForSeconds(this.completeLevelWaitTimeInSecs);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void CheckForCompletion()
+    {
+        GameManager.Instance.CheckIfWon();
     }
 
     public override void TriggerCompleteLevel()
@@ -22,11 +27,5 @@ public class Level2 : Level
             base.TriggerCompleteLevel();
             StartCoroutine(this.CompleteLevel());
         }
-    }
-
-    private IEnumerator CompleteLevel()
-    {
-        yield return new WaitForSeconds(this.completeLevelWaitTimeInSecs);
-        SceneManager.LoadScene("Level3");
     }
 }

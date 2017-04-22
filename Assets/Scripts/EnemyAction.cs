@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyAction : MonoBehaviour
 {
@@ -13,11 +14,17 @@ public class EnemyAction : MonoBehaviour
     public Attack AttackBehavior = Attack.Consume;
     public float PushForce = 2f;
     public GameObject GoodStuffPrefab;
+    public Action onCollided;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
-		
+        GeneralLevel generalLevel = FindObjectOfType<GeneralLevel>();
+
+        if(generalLevel != null)
+        {
+            onCollided += generalLevel.CheckForCompletion;
+        }
 	}
 	
 	// Update is called once per frame
@@ -41,6 +48,11 @@ public class EnemyAction : MonoBehaviour
                     else
                     {
                         Destroy(gameObject);
+
+                        if(this.onCollided != null)
+                        {
+                            this.onCollided();
+                        }
                     }
                     break;
 
