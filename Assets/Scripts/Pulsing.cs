@@ -6,6 +6,7 @@ public class Pulsing : MonoBehaviour
 {
     public Light Light;
     public float MaxIntensity = 10f;
+    public float MinIntensity = 1f;
     public float Steps;
     public float GlowRate;
 
@@ -37,7 +38,7 @@ public class Pulsing : MonoBehaviour
         {
             inc = false;
         }
-        else if(Light.intensity <= 1f && !inc)
+        else if(Light.intensity <= MinIntensity && !inc)
         {
             inc = true;
         }
