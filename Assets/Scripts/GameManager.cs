@@ -51,6 +51,20 @@ public class GameManager : Singleton<GameManager>
 			Instantiate (gameOverGO);
             SetCurrenGameState(EGameState.GameOver);
 		}
+
+		if (Input.GetKeyUp(KeyCode.P)) // break
+		{
+			if (Time.timeScale == 1) // audio on
+			{
+				Time.timeScale = 0;
+				AudioListener.pause = true;
+			}
+			else // audio off
+			{
+				Time.timeScale = 1;
+				AudioListener.pause = false;
+			}
+		}
 	}
 	private void HandleGameOverState() {
 		if (Input.anyKey) {
