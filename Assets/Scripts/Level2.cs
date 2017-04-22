@@ -1,16 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Level2 : MonoBehaviour {
+public class Level2 : Level
+{
+    public float completeLevelWaitTimeInSecs = 2;
+    private bool completeLevelTriggered;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start()
+    {
+        Merging merging = FindObjectOfType<Merging>();
+        merging.onCollided += this.TriggerCompleteLevel;
+    }
+
+    private void TriggerCompleteLevel()
+    {
+        if (!this.completeLevelTriggered)
+        {
+            this.completeLevelTriggered = true;
+            StartCoroutine(this.CompleteLevel());
+        }
+    }
+
+    private IEnumerator CompleteLevel()
+    {
+        yield return new WaitForSeconds(this.completeLevelWaitTimeInSecs);
+        SceneManager.LoadScene("Level3");
+    }
 }

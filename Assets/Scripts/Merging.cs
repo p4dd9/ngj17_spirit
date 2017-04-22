@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Merging : MonoBehaviour
 {
     public GameObject MergeEffect;
     public float minSize = .5f;
     public float maxSize = 4f;
+    public Action onCollided;
 
     private float currentSize;
     private Rigidbody2D shapeRB;
@@ -49,6 +51,12 @@ public class Merging : MonoBehaviour
                 if (currentSize > maxSize)
                     currentSize = maxSize;
                 transform.localScale = new Vector3(currentSize, currentSize, currentSize);
+
+                if (this.onCollided != null)
+                {
+                    this.onCollided();
+                    this.onCollided = null;
+                }
             }
         }
     }

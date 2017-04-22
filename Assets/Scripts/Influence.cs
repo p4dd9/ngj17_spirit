@@ -5,8 +5,6 @@ using System;
 
 public class Influence : MonoBehaviour
 {
-    public float maxPushForce = 5f;
-
     private Rigidbody2D playerRB;
     public Action onCollided;
 
