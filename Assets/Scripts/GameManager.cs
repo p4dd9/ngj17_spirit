@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
 		if (Input.GetKeyUp (KeyCode.G)) {
 			GameObject gameOverGO = Resources.Load<GameObject> ("GameOver");
 			Instantiate (gameOverGO);
-			SetCurrenGameState(EGameState.GameOver);
+            SetCurrenGameState(EGameState.GameOver);
 		}
 	}
 	private void HandleGameOverState() {

@@ -20,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.Instance.currentGameState == EGameState.GameOver)
+        {
+            return;
+        }
+
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
 
@@ -29,12 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.rigidbody2D.AddForce(this.currentDirection.normalized * this.currentDirection.magnitude * this.thrust);
-    }
+        if (GameManager.Instance.currentGameState == EGameState.GameOver)
+        {
+            return;
+        }
 
-    private void LateUpdate()
-    {
-        //Vector3 worldPoint = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 5));
-        //this.transform.position = worldPoint;
+        this.rigidbody2D.AddForce(this.currentDirection.normalized * this.currentDirection.magnitude * this.thrust);
     }
 }
