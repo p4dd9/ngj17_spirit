@@ -19,7 +19,7 @@ public class Level3 : Level
         SceneManager.LoadScene("Level4");
     }
 
-    protected override void TriggerCompleteLevel()
+    public override void TriggerCompleteLevel()
     {
         if (!this.completeLevelTriggered)
         {

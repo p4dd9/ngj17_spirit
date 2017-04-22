@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf0aa4f1e619264fa35c23159f915c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SplitEffect: {fileID: 1842718793596368, guid: 1456c3bc232e79543865f5953df65281,
+    type: 2}
   AttackBehavior: 1
   PushForce: 2
   GoodStuffPrefab: {fileID: 1391449319782516, guid: cbae4230304fd4240b17c665a56c5789,
@@ -195,7 +197,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700665371207054}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f9d7a0323fc16c428416f88c8123c17, type: 3}
   m_Name: 

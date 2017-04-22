@@ -11,7 +11,7 @@ public class Level : MonoBehaviour
         GameManager.Instance.currentGameState = EGameState.InGame;
     }
 
-    protected virtual void TriggerCompleteLevel()
+    public virtual void TriggerCompleteLevel()
     {
         Instantiate<GameObject>(this.fadeOutGO);
     }
