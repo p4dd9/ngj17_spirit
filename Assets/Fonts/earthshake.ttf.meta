@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: ef811e06c4da1422aba20c082bd90ba2
+timeCreated: 1492867743
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Earthshake
+  fontNames:
+  - Earthshake
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
