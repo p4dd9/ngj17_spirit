@@ -10,7 +10,7 @@ public class EnemyAction : MonoBehaviour
         Split
     }
 
-    public Attack Behavior = Attack;
+    public Attack AttackBehavior = Attack.Consume;
 
 	// Use this for initialization
 	void Start ()
@@ -24,14 +24,24 @@ public class EnemyAction : MonoBehaviour
 		
 	}
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "GoodStuff")
+        if (other.gameObject.tag == "GoodStuff")
         {
-            if(other.gameObject.transform.localScale.x < transform.localScale.x)
+            switch (AttackBehavior)
             {
-                Destroy(other.gameObject);
+                case Attack.Consume:
+                    if (other.gameObject.transform.localScale.x < transform.localScale.x)
+                    {
+                        Destroy(other.gameObject);
+                    }
+                    break;
+
+                case Attack.Split:
+                    break;
             }
+
         }
     }
+
 }
