@@ -20,10 +20,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        /*if(GameManager.Instance.currentGameState == EGameState.GameOver)
+        if(GameManager.Instance.currentGameState == EGameState.GameOver)
         {
             return;
-        }*/
+        }
 
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
@@ -34,10 +34,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*if (GameManager.Instance.currentGameState == EGameState.GameOver)
+        if (GameManager.Instance.currentGameState == EGameState.GameOver)
         {
             return;
-        }*/
+        }
 
         this.rigidbody2D.AddForce(this.currentDirection.normalized * this.currentDirection.magnitude * this.thrust);
     }
