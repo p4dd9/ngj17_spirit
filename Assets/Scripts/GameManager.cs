@@ -45,9 +45,28 @@ public class GameManager : Singleton<GameManager>
 		}
 	}
 
-    public void CheckIfGameOver()
+    public IEnumerator CheckIfGameOver()
     {
-        if (GameObject.FindGameObjectsWithTag("GoodStuff").Length - 1 == 0)
+        yield return new WaitForEndOfFrame();
+        GameObject[] goodStuffs = GameObject.FindGameObjectsWithTag("GoodStuff");
+
+        float goodStuffSize = 0;
+
+        for(int i = 0; i < goodStuffs.Length; ++i)
+        {
+            goodStuffSize += goodStuffs[i].transform.localScale.x;
+        }
+
+        EnemyAction[] badStuffs = FindObjectsOfType<EnemyAction>();
+
+        float badStuffSize = 0;
+
+        for (int i = 0; i < badStuffs.Length; ++i)
+        {
+            badStuffSize += badStuffs[i].transform.localScale.x;
+        }
+
+        if (goodStuffSize < badStuffSize)
         {
             GameObject gameOverGO = Resources.Load<GameObject>("GameOver");
             Instantiate(gameOverGO);
