@@ -19,15 +19,21 @@ public class Level3 : Level
         SceneManager.LoadScene("Level4");
     }
 
+    protected override void TriggerCompleteLevel()
+    {
+        if (!this.completeLevelTriggered)
+        {
+            this.completeLevelTriggered = true;
+            base.TriggerCompleteLevel();
+            StartCoroutine(this.CompleteLevel());
+        }
+    }
+
     private IEnumerator LevelCompleteCheck()
     {
         if(FindObjectsOfType<Merging>().Length == 1)
         {
-            if (!this.completeLevelTriggered)
-            {
-                this.completeLevelTriggered = true;
-                StartCoroutine(this.CompleteLevel());
-            }
+            TriggerCompleteLevel();
         }
         else
         {

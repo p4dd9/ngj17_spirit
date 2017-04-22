@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    public GameObject fadeOutGO;
+
     protected virtual void Awake()
     {
         GameManager.Instance.currentGameState = EGameState.InGame;
+    }
+
+    protected virtual void TriggerCompleteLevel()
+    {
+        Instantiate<GameObject>(this.fadeOutGO);
     }
 }

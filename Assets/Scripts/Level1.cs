@@ -14,11 +14,12 @@ public class Level1 : Level
         influence.onCollided += this.TriggerCompleteLevel;
     }
 
-    private void TriggerCompleteLevel()
+    protected override void TriggerCompleteLevel()
     {
         if(!this.completeLevelTriggered)
         {
             this.completeLevelTriggered = true;
+            base.TriggerCompleteLevel();
             StartCoroutine(this.CompleteLevel());
         }
     }

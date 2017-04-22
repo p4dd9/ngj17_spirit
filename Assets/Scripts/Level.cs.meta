@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: c49d5d86e9f534f40b60f60edd764382
-timeCreated: 1492869458
+timeCreated: 1492877526
 licenseType: Pro
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fadeOutGO: {fileID: 1722348786893756, guid: e43f280c023464d4cb85de1e01192e77,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
