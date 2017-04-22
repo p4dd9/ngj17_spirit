@@ -7,5 +7,6 @@ public class InitManagers : MonoBehaviour {
     private void Awake()
     {
         GameManager.Instance.Touch();
+        AudioManager.Instance.Touch();
     }
 }
