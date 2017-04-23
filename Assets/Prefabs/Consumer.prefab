@@ -220,10 +220,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9d7a0323fc16c428416f88c8123c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
-  WanderDistance: 1.5
-  WanderRadius: 3
-  WanderRate: 2
+  Speed: 3
+  WanderRate: 4
+  directionLagCoefficient: 1.5
 --- !u!212 &212261748432429320
 SpriteRenderer:
   m_ObjectHideFlags: 1
