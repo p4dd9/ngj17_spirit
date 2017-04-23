@@ -21,7 +21,8 @@ public class GameManager : Singleton<GameManager>
 	{
 		switch (this.currentGameState) {
 		case EGameState.InGame:
-			{
+        case EGameState.Multiplayer:
+            {
 				HandleInGameState ();
 				break;
 			}
@@ -31,7 +32,12 @@ public class GameManager : Singleton<GameManager>
 				HandleGameOverState ();
 				break;
 			}
-		}
+        case EGameState.Menu:
+            {
+                HandleMenuState();
+                break;
+            }
+        }
 	}
 
 	public IEnumerator CheckIfWon ()
@@ -108,17 +114,30 @@ public class GameManager : Singleton<GameManager>
 				AudioListener.pause = false;
 			}
 		}
-	}
+        else if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            SetCurrenGameState(EGameState.Menu);
+            LoadScene("Menu");
+        }
+    }
 
 	private void HandleGameOverState ()
 	{
-		if (Input.anyKey) {
+		if (Input.GetKeyUp(KeyCode.Space)) {
 			SetCurrenGameState (EGameState.Menu);
 			LoadScene ("Menu");
 		}
 	}
 
-	private void SetCurrenGameState (EGameState state)
+    private void HandleMenuState()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
+    private void SetCurrenGameState (EGameState state)
 	{
 		this.currentGameState = state;
 	}

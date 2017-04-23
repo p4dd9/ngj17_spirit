@@ -56,6 +56,7 @@ public class Merging : MonoBehaviour
 
                 if (this.onCollided != null)
                 {
+                    Debug.Log("onCollided called");
                     this.onCollided();
                     this.onCollided = null;
                 }

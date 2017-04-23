@@ -9,7 +9,6 @@ public class EnemyMovement : MonoBehaviour
     public float directionLagCoefficient = 2;
 
     private Rigidbody2D shapeRB;
-    private Vector2 movement = Vector2.zero;
     private float timer = 0f;
     private Vector2 currentDirection;
     private Vector2 desiredDirection;
