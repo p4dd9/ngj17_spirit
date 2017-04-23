@@ -7,4 +7,9 @@ Contributers:
 * Patrick Obermueller [Programmer, Game Design]  
 
 Event: Nordic Game Jam 2017 [NGJ](https://nordicgamejam.org/)  
-Jam Drive Folder: [Drive](https://drive.google.com/open?id=0BwLNptSY0yJ8c2Ntemh0VUhaVFE) (Read only)  
+Jam Drive Folder: [Drive](https://drive.google.com/open?id=0BwLNptSY0yJ8c2Ntemh0VUhaVFE) (Read only) 
+
+ToDos:
+* Refactor, Refactor, Refactor ...
+* Respect Screen Sizes & Ratios
+* A lot more ... :) 
