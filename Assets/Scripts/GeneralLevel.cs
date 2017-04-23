@@ -24,7 +24,7 @@ public class GeneralLevel : Level
 
     public void CheckForCompletion()
     {
-        GameManager.Instance.CheckIfWon();
+        StartCoroutine(GameManager.Instance.CheckIfWon());
     }
 
     public override void TriggerCompleteLevel()
