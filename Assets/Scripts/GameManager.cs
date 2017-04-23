@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum EGameState
 {
 	Menu,
 	InGame,
+    Multiplayer,
 	GameOver
 }
 
@@ -66,11 +68,32 @@ public class GameManager : Singleton<GameManager>
 			badStuffSize += badStuffs [i].transform.localScale.x;
 		}
 
-		if (goodStuffSize < badStuffSize) {
-			GameObject gameOverGO = Resources.Load<GameObject> ("GameOver");
-			Instantiate (gameOverGO);
-			SetCurrenGameState (EGameState.GameOver);
-		}
+        if(this.currentGameState == EGameState.Multiplayer)
+        {
+            if(goodStuffSize == 0)
+            {
+                GameObject gameOverGO = Resources.Load<GameObject>("GameOver");
+                GameObject go = Instantiate(gameOverGO);
+                go.GetComponentInChildren<Text>().text = "Player 2 wins";
+                SetCurrenGameState(EGameState.GameOver);
+            }
+            else if (badStuffSize == 0)
+            {
+                GameObject gameOverGO = Resources.Load<GameObject>("GameOver");
+                GameObject go = Instantiate(gameOverGO);
+                go.GetComponentInChildren<Text>().text = "Player 1 wins";
+                SetCurrenGameState(EGameState.GameOver);
+            }
+        }
+        else
+        {
+            if (goodStuffSize < badStuffSize)
+            {
+                GameObject gameOverGO = Resources.Load<GameObject>("GameOver");
+                Instantiate(gameOverGO);
+                SetCurrenGameState(EGameState.GameOver);
+            }
+        }
 	}
 
 	private void HandleInGameState ()

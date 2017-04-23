@@ -16,6 +16,8 @@ public class MultiplayerMovement : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.currentGameState = EGameState.Multiplayer;
+
         this.rigidbody2D = this.GetComponent<Rigidbody2D>();
         if (gameObject.tag == "Player1")
             isPlayer1 = true;
