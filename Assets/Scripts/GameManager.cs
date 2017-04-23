@@ -43,7 +43,6 @@ public class GameManager : Singleton<GameManager>
 			goodStuffSize += goodStuffs [i].transform.localScale.x;
 		}
 
-		//EnemyAction[] badStuffs = FindObjectsOfType<EnemyAction> ();
         GameObject[] badStuffs = GameObject.FindGameObjectsWithTag("BadStuff");
 
         float badStuffSize = 0;

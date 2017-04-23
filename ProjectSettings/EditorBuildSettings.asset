@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Credits.unity
     guid: 658528849472d482ba9b0695500d4584
   - enabled: 1
+    path: Assets/Scenes/Multiplayer.unity
+    guid: b7ca0f0ac2c3f42dfb8ceb0c32f22383
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 4d129700908e41343bb12b26198f1dee
   - enabled: 1
@@ -26,6 +29,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level5.unity
     guid: 7906efecf0ffecf44bbc76cc1a890f57
-  - enabled: 1
-    path: Assets/Scenes/Multiplayer.unity
-    guid: b7ca0f0ac2c3f42dfb8ceb0c32f22383

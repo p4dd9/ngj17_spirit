@@ -11,7 +11,15 @@ public class GeneralLevel : Level
     private IEnumerator CompleteLevel()
     {
         yield return new WaitForSeconds(this.completeLevelWaitTimeInSecs);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        if(SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCount - 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene("Credits");
+        }
     }
 
     public void CheckForCompletion()
