@@ -35,26 +35,9 @@ public class GameManager : Singleton<GameManager>
 	public IEnumerator CheckIfWon ()
 	{
 		yield return new WaitForEndOfFrame ();
-		GameObject[] goodStuffs = GameObject.FindGameObjectsWithTag ("GoodStuff");
-
-		float goodStuffSize = 0;
-
-		for (int i = 0; i < goodStuffs.Length; ++i) {
-			goodStuffSize += goodStuffs [i].transform.localScale.x;
-		}
-
-		//EnemyAction[] badStuffs = FindObjectsOfType<EnemyAction> ();
         GameObject[] badStuffs = GameObject.FindGameObjectsWithTag("BadStuff");
 
-        float badStuffSize = 0;
-
-		for (int i = 0; i < badStuffs.Length; ++i) {
-			badStuffSize += badStuffs [i].transform.localScale.x;
-		}
-        Debug.Log("good: " + goodStuffSize);
-        Debug.Log("bad: " + badStuffSize);
-
-		if (goodStuffSize > badStuffSize) {
+		if (badStuffs.Length == 0) {
 			GeneralLevel generalLevel = FindObjectOfType<GeneralLevel> ();
 
 			if (generalLevel != null) {

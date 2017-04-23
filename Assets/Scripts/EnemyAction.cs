@@ -111,6 +111,8 @@ public class EnemyAction : MonoBehaviour
                             // push the 2 new objects away
                             split1.GetComponent<Rigidbody2D>().AddForce(-dir * PushForce, ForceMode2D.Impulse);
                             split2.GetComponent<Rigidbody2D>().AddForce(dir * PushForce, ForceMode2D.Impulse);
+
+                            Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Split"));
                         }
                     }
                     break;

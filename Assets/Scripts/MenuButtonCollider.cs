@@ -57,7 +57,8 @@ public class MenuButtonCollider : MonoBehaviour
 				{
 					if (!this.loadLevelTriggered) {
 						this.loadLevelTriggered = true;
-						StartCoroutine (LoadLevel ("Level1"));
+                        Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Start game"));
+						StartCoroutine (LoadLevel ("Level1", 1.5f));
 					}              
 				}
 				break;
@@ -68,7 +69,8 @@ public class MenuButtonCollider : MonoBehaviour
 						this.loadLevelTriggered = true;
 						string continueScene = PlayerPrefs.GetString ("ContinueScene", "");
 						if (continueScene.Length > 0) {
-							StartCoroutine (LoadLevel (continueScene));
+                            Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Start game"));
+                            StartCoroutine (LoadLevel (continueScene, 1.5f));
 						}
 					}
 				}
@@ -110,11 +112,11 @@ public class MenuButtonCollider : MonoBehaviour
 		}
 	}
 
-	private IEnumerator LoadLevel (string levelName)
+	private IEnumerator LoadLevel (string levelName, float fadeTime = 0.5f)
 	{
 		GameObject go = Instantiate<GameObject> (Resources.Load<GameObject> ("FadeOut"));
-		go.GetComponentInChildren<UIFade> ().fadeTime = 0.5f;
-		yield return new WaitForSeconds (0.5f);
+		go.GetComponentInChildren<UIFade> ().fadeTime = fadeTime;
+		yield return new WaitForSeconds (fadeTime);
 		SceneManager.LoadScene (levelName);
 	}
 
