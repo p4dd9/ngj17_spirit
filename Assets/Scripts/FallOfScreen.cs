@@ -18,12 +18,15 @@ public class FallOfScreen : MonoBehaviour
 		leftConstraint = Camera.main.ScreenToWorldPoint (new Vector3 (0.0f, 0.0f, distanceZ)).x;
 		rightConstraint = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width, 0.0f, distanceZ)).x;
 		bottomConstraint = Camera.main.ScreenToWorldPoint (new Vector3 (0.0f, 0.0f, distanceZ)).y;
-		topConstraint = Camera.main.ScreenToWorldPoint (new Vector3 (0.0f, Screen.height, distanceZ)).y;
-
-		buffer = transform.localScale.x;
+		topConstraint = Camera.main.ScreenToWorldPoint (new Vector3 (0.0f, Screen.height, distanceZ)).y;		
 	}
 
-	void LateUpdate ()
+    private void Update()
+    {
+        buffer = transform.localScale.x / 2f;
+    }
+
+    void LateUpdate ()
 	{
 		// HORIZONTAL borders
 		if (transform.position.x < leftConstraint - buffer) {
