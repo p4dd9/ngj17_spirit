@@ -727,6 +727,11 @@ Prefab:
       propertyPath: m_Name
       value: BadStuff_Split (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114923596554804496, guid: e351ea93b15111d439b60b3bd4a0ceb9,
+        type: 2}
+      propertyPath: Speed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e351ea93b15111d439b60b3bd4a0ceb9, type: 2}
   m_IsPrefabParent: 0
@@ -3789,7 +3794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2021007860
 Transform:
   m_ObjectHideFlags: 0
