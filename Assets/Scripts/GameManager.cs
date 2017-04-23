@@ -43,13 +43,16 @@ public class GameManager : Singleton<GameManager>
 			goodStuffSize += goodStuffs [i].transform.localScale.x;
 		}
 
-		EnemyAction[] badStuffs = FindObjectsOfType<EnemyAction> ();
+		//EnemyAction[] badStuffs = FindObjectsOfType<EnemyAction> ();
+        GameObject[] badStuffs = GameObject.FindGameObjectsWithTag("BadStuff");
 
-		float badStuffSize = 0;
+        float badStuffSize = 0;
 
 		for (int i = 0; i < badStuffs.Length; ++i) {
 			badStuffSize += badStuffs [i].transform.localScale.x;
 		}
+        Debug.Log("good: " + goodStuffSize);
+        Debug.Log("bad: " + badStuffSize);
 
 		if (goodStuffSize > badStuffSize) {
 			GeneralLevel generalLevel = FindObjectOfType<GeneralLevel> ();
@@ -71,9 +74,10 @@ public class GameManager : Singleton<GameManager>
 			goodStuffSize += goodStuffs [i].transform.localScale.x;
 		}
 
-		EnemyAction[] badStuffs = FindObjectsOfType<EnemyAction> ();
+		//EnemyAction[] badStuffs = FindObjectsOfType<EnemyAction> ();
+        GameObject[] badStuffs = GameObject.FindGameObjectsWithTag("BadStuff");
 
-		float badStuffSize = 0;
+        float badStuffSize = 0;
 
 		for (int i = 0; i < badStuffs.Length; ++i) {
 			badStuffSize += badStuffs [i].transform.localScale.x;
