@@ -6,6 +6,10 @@ TagManager:
   tags:
   - GoodStuff
   - BadStuff
+  - Player1
+  - Player2
+  - Player1Stuff
+  - Player2Stuff
   layers:
   - Default
   - TransparentFX
@@ -17,10 +21,10 @@ TagManager:
   - 
   - BadStuff
   - Player
-  - 
-  - 
-  - 
-  - 
+  - Player1
+  - Player2
+  - Player1Stuff
+  - Player2Stuff
   - 
   - 
   - 

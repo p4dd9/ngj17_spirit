@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GravitationalForce : MonoBehaviour
 {
+    public float MaxSize = 4f;
 
 	// Use this for initialization
 	void Start ()
@@ -21,25 +22,25 @@ public class GravitationalForce : MonoBehaviour
     {
         if (other.gameObject.tag == transform.parent.tag)
         {
-            Rigidbody2D otherRB = other.gameObject.GetComponentInParent<Rigidbody2D>();
+                Rigidbody2D otherRB = other.gameObject.GetComponentInParent<Rigidbody2D>();
 
-            Vector3 dir = transform.position - other.gameObject.transform.position;
+                Vector3 dir = transform.parent.position - other.gameObject.transform.position;
 
-            if(otherRB)
-                otherRB.AddForce(dir, ForceMode2D.Impulse);
+                if (otherRB)
+                    otherRB.AddForce(dir * 2, ForceMode2D.Impulse);
         }
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == transform.parent.tag)
-        {
+        {          
             Rigidbody2D otherRB = other.gameObject.GetComponentInParent<Rigidbody2D>();
 
-            Vector3 dir = transform.position - other.gameObject.transform.position;
+            Vector3 dir = transform.parent.position - other.gameObject.transform.position;
 
             if (otherRB)
-                otherRB.AddForce(dir);
+                otherRB.AddForce(dir * 2); 
         }
     }
 }
