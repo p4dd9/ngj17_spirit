@@ -221,9 +221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
-  WanderDistance: 2
-  WanderRadius: 5
-  WanderRate: 1.125
+  WanderDistance: 1.5
+  WanderRadius: 3
+  WanderRate: 2
 --- !u!212 &212261748432429320
 SpriteRenderer:
   m_ObjectHideFlags: 1
