@@ -40,91 +40,123 @@ public class EnemyAction : MonoBehaviour
     {
         if (other.gameObject.tag == "GoodStuff")
         {
-            switch (AttackBehavior)
+            if (GameManager.Instance.currentGameState == EGameState.Multiplayer)
             {
-                case Attack.Consume:
-                    if (other.gameObject.transform.localScale.x < transform.localScale.x)
+                if(other.gameObject.transform.localScale.x == transform.localScale.x)
+                {
+                    // nothing for now
+                }
+                else if (other.gameObject.transform.localScale.x < transform.localScale.x)
+                {
+                    Destroy(other.gameObject);
+                    if (ConsumeEffectConsumer != null)
                     {
-                        Destroy(other.gameObject);
-                        if (ConsumeEffectConsumer != null)
-                        {
-                            GameObject ps = Instantiate(ConsumeEffectConsumer, transform.position, transform.rotation);
-                            Destroy(ps, ps.GetComponent<ParticleSystem>().main.duration);
-                        }
-
-                        StartCoroutine(GameManager.Instance.CheckIfGameOver());
-                        Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Red eats green"));
+                        GameObject ps = Instantiate(ConsumeEffectConsumer, transform.position, transform.rotation);
+                        Destroy(ps, ps.GetComponent<ParticleSystem>().main.duration);
                     }
-                    else
+
+                    StartCoroutine(GameManager.Instance.CheckIfGameOver());
+                    Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Red eats green"));
+                }
+                else
+                {
+                    if (ConsumeEffectGoodStuff != null)
                     {
-                        if (ConsumeEffectGoodStuff != null)
-                        {
-                            GameObject ps = Instantiate(ConsumeEffectGoodStuff, transform.position, transform.rotation);
-                            Destroy(ps, ps.GetComponent<ParticleSystem>().main.duration);
-                        }
-
-                        Destroy(gameObject);
-
-                        Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Hit Green" + UnityEngine.Random.Range(0, 3)));
-
-                        if (this.onCollided != null)
-                        {
-                            this.onCollided();
-                        }
+                        GameObject ps = Instantiate(ConsumeEffectGoodStuff, transform.position, transform.rotation);
+                        Destroy(ps, ps.GetComponent<ParticleSystem>().main.duration);
                     }
-                    break;
 
-                case Attack.Split:
-                    if (other.gameObject.transform.localScale.x > other.gameObject.GetComponent<Merging>().minSize)
+                    Destroy(gameObject);
+
+                    Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Hit Green" + UnityEngine.Random.Range(0, 3)));
+
+                    if (this.onCollided != null)
                     {
-                        Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
-                        Transform oldTransform = other.gameObject.transform;
-                        Destroy(other.gameObject);
-
-                        if(GoodStuffPrefab != null)
+                        this.onCollided();
+                    }
+                }
+            }
+            else
+            {
+                switch (AttackBehavior)
+                {
+                    case Attack.Consume:
+                        if (other.gameObject.transform.localScale.x < transform.localScale.x)
                         {
-                            float newScale = oldTransform.localScale.x / 2f;
-                            if (newScale < other.gameObject.GetComponent<Merging>().minSize)
-                                newScale = other.gameObject.GetComponent<Merging>().minSize;
-
-                            Vector3 dir = new Vector3(newScale, newScale, 0);
-                            GameObject split1 = Instantiate(GoodStuffPrefab, oldTransform.position - dir, Quaternion.identity);
-                            GameObject split2 = Instantiate(GoodStuffPrefab, oldTransform.position + dir, Quaternion.identity);
-
-                            if (SplitEffect != null)
+                            Destroy(other.gameObject);
+                            if (ConsumeEffectConsumer != null)
                             {
-                                GameObject ps = Instantiate(SplitEffect, transform.position, transform.rotation);
+                                GameObject ps = Instantiate(ConsumeEffectConsumer, transform.position, transform.rotation);
                                 Destroy(ps, ps.GetComponent<ParticleSystem>().main.duration);
                             }
 
-                            // update scale, mass and drag
-                            split1.transform.localScale = Vector3.one * newScale;
-                            Rigidbody2D split1RB = split1.GetComponent<Rigidbody2D>();
-                            split1RB.mass = otherRB.mass / 2f;
-                            //split1RB.drag = otherRB.drag / 2f;
-
-                            split2.transform.localScale = Vector3.one * newScale;
-                            Rigidbody2D split2RB = split2.GetComponent<Rigidbody2D>();
-                            split2RB.mass = otherRB.mass / 2f;
-                            //split2RB.drag = otherRB.drag / 2f;
-
-                            // push the 2 new objects away
-                            split1.GetComponent<Rigidbody2D>().AddForce(-dir * PushForce, ForceMode2D.Impulse);
-                            split2.GetComponent<Rigidbody2D>().AddForce(dir * PushForce, ForceMode2D.Impulse);
-
-                            Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Split"));
+                            StartCoroutine(GameManager.Instance.CheckIfGameOver());
+                            Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Red eats green"));
                         }
-                    }
-                    break;
+                        else
+                        {
+                            if (ConsumeEffectGoodStuff != null)
+                            {
+                                GameObject ps = Instantiate(ConsumeEffectGoodStuff, transform.position, transform.rotation);
+                                Destroy(ps, ps.GetComponent<ParticleSystem>().main.duration);
+                            }
+
+                            Destroy(gameObject);
+
+                            Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Hit Green" + UnityEngine.Random.Range(0, 3)));
+
+                            if (this.onCollided != null)
+                            {
+                                this.onCollided();
+                            }
+                        }
+                        break;
+
+                    case Attack.Split:
+                        if (other.gameObject.transform.localScale.x > other.gameObject.GetComponent<Merging>().minSize)
+                        {
+                            Rigidbody2D otherRB = other.gameObject.GetComponent<Rigidbody2D>();
+                            Transform oldTransform = other.gameObject.transform;
+                            Destroy(other.gameObject);
+
+                            if (GoodStuffPrefab != null)
+                            {
+                                float newScale = oldTransform.localScale.x / 2f;
+                                if (newScale < other.gameObject.GetComponent<Merging>().minSize)
+                                    newScale = other.gameObject.GetComponent<Merging>().minSize;
+
+                                Vector3 dir = new Vector3(newScale, newScale, 0);
+                                GameObject split1 = Instantiate(GoodStuffPrefab, oldTransform.position - dir, Quaternion.identity);
+                                GameObject split2 = Instantiate(GoodStuffPrefab, oldTransform.position + dir, Quaternion.identity);
+
+                                if (SplitEffect != null)
+                                {
+                                    GameObject ps = Instantiate(SplitEffect, transform.position, transform.rotation);
+                                    Destroy(ps, ps.GetComponent<ParticleSystem>().main.duration);
+                                }
+
+                                // update scale, mass and drag
+                                split1.transform.localScale = Vector3.one * newScale;
+                                Rigidbody2D split1RB = split1.GetComponent<Rigidbody2D>();
+                                split1RB.mass = otherRB.mass / 2f;
+                                //split1RB.drag = otherRB.drag / 2f;
+
+                                split2.transform.localScale = Vector3.one * newScale;
+                                Rigidbody2D split2RB = split2.GetComponent<Rigidbody2D>();
+                                split2RB.mass = otherRB.mass / 2f;
+                                //split2RB.drag = otherRB.drag / 2f;
+
+                                // push the 2 new objects away
+                                split1.GetComponent<Rigidbody2D>().AddForce(-dir * PushForce, ForceMode2D.Impulse);
+                                split2.GetComponent<Rigidbody2D>().AddForce(dir * PushForce, ForceMode2D.Impulse);
+
+                                Camera.main.GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Split"));
+                            }
+                        }
+                        break;
+                }
             }
 
         }
     }
-
-    //private void adjustRigidbody (GameObject other)
-    //{
-    //    Rigidbody2D otherRB = other.GetComponent<Rigidbody2D>();
-    //    otherRB.mass
-    //}
-
 }
