@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1259905117206550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9040172, y: -0.12146479, z: 0}
+  m_LocalPosition: {x: -4.715538, y: 2.275356, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4873499872370300}
@@ -201,10 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SplitEffect: {fileID: 0}
-  ConsumeEffectGoodStuff: {fileID: 1778030180722434, guid: 90a9a72b36408ac4680181e69be27137,
-    type: 2}
-  ConsumeEffectConsumer: {fileID: 1914482702374246, guid: de2c37dab2529504783f45eb208e2fc5,
-    type: 2}
+  ConsumeEffectGoodStuff: {fileID: 0}
+  ConsumeEffectConsumer: {fileID: 0}
   AttackBehavior: 0
   PushForce: 2
   GoodStuffPrefab: {fileID: 0}
